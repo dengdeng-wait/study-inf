@@ -57,7 +57,8 @@ export default {
         };
         const { data } = await loginUser(userData);
         console.log(data.user.username);
-        this.logMessage = `${data.user.username} 님 환영합니다`;
+        this.$store.commit('setUsername', data.user.username); //mutations 호출하는 api는 this.$store.commit(), 두번째 인자값인 data.user.username는 payload라는 추가전달인자
+        this.$router.push('/main'); //main으로 이동, 자바스크립트 이용한 페이지이동방식 == <router-link to="">같은 개념(html이용방식)// vue router - programmatic navigation 문서 참고
         // this.initForm();
       } catch (error) {
         // 에러 핸들링할 코드
